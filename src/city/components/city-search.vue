@@ -15,9 +15,7 @@
 	.city-search
 		font-size:0.28rem
 		height:0.72rem
-		line-height:0.72rem
-		/*background:$bgColor*/
-		background:red
+		background:$bgColor
 		padding:0 .1rem
 		.search-input
 			box-sizing:border-box
