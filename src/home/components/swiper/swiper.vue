@@ -1,9 +1,9 @@
 <template>
 	<div class="wrap">
-		<swiper :options="swiperOption" class="swiper">
+		<swiper :options="swiperOption" class="swiper" v-if="showSwiper">
 			<!-- slides -->
-			<swiper-slide v-for="item in swiperList" :key="item.id">
-				<img :src="item.imgurl" />
+			<swiper-slide v-for="item in list" :key="item.id">
+				<img :src="item.imgUrl" />
 			</swiper-slide>
 			
 			<!-- Optional controls -->
@@ -14,37 +14,23 @@
 
 <script>
 	export default {
+		props : {
+			list : Array
+		},
 		data () {
 			return {
 				swiperOption: {
-					loop: true,
-					autoplay: true,
 					pagination: {
 						el: '.swiper-pagination'
-					}
-				},
-				swiperList: [
-				{
-					id: '000001',
-					imgurl: 'static/image/01.jpg'
-				},
-				{
-					id: '000002',
-					imgurl: 'static/image/02.jpg'
-				},
-				{
-					id: '000003',
-					imgurl: 'static/image/03.jpg'
-				},
-				{
-					id: '000004',
-					imgurl: 'static/image/04.jpg'
-				},
-				{
-					id: '000005',
-					imgurl: 'static/image/05.jpg'
+					},
+					loop: true,
+					autoplay: true
 				}
-				]
+			}
+		},
+		computed:{
+			showSwiper(){
+				return this.list.length
 			}
 		}
 	}
@@ -57,7 +43,7 @@
 		overflow:hidden
 		width:100%
 		height:0		
-		padding-bottom:26%
+		padding-bottom:30%
 		background:#ddd
 		.swiper
 			font-size:14px

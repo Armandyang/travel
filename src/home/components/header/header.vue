@@ -8,7 +8,7 @@
 			输入城市/景点/游玩主题
 		</div>
 		<div class="header-right">
-			三亚
+			{{this.city}}
 			<span class="iconfont arrow-down">&#xe62b;</span>
 		</div>
 	</div>
@@ -16,7 +16,9 @@
 
 <script>
 	export default {
-		
+		props: {
+			city: String
+		}
 	}
 </script>
 

@@ -1,10 +1,10 @@
 <template>
 	<div class="icons">
 		<swiper :options="swiperOption">
-			<swiper-slide v-for="(page,index) in pages" :key="index" class="swipper">
-				<div class="icon" v-for="item in page">
+			<swiper-slide v-for="(icons,index) in pages" :key="index" class="swipper">
+				<div class="icon" v-for="item in icons">
 					<div class="icon-img">
-						<img :src="item.imgurl" alt=""/>
+						<img :src="item.imgUrl" alt=""/>
 					</div>
 					<p class="icon-desc">{{item.desc}}</p>
 				</div>
@@ -16,6 +16,9 @@
 
 <script>
 	export default {
+		props : {
+			icons : Array
+		},
 		data(){
 			return {
 				swiperOption: {
@@ -23,55 +26,13 @@
 					pagination: {
 						el: '.swiper-pagination'
 					}
-				},
-				iconList:[
-				{
-					desc:'景点门票',
-					imgurl: require('./image/Scenic-spot.png')
-				},
-				{
-					desc:'一日游',
-					imgurl: require('./image/tour.png')
-				},
-				{
-					desc:'郑州必游',
-					imgurl: require('./image/must.png')
-				},
-				{
-					desc:'自然风光',
-					imgurl: require('./image/natural.png')
-				},
-				{
-					desc:'当地好玩',
-					imgurl: require('./image/local.png')
-				},
-				{
-					desc:'动物园',
-					imgurl: require('./image/zoo.png')
-				},
-				{
-					desc:'名胜古迹',
-					imgurl: require('./image/historical.png')
-				},
-				{
-					desc:'泡温泉',
-					imgurl: require('./image/spa.png')
-				},
-				{
-					desc:'主题乐园',
-					imgurl: require('./image/park.png')
-				},
-				{
-					desc:'滑雪季',
-					imgurl: require('./image/skiing.png')
 				}
-				]
 			}
 		},
 		computed: {
 			pages (){
 				const pages = [];
-				this.iconList.forEach((item,index)=>{
+				this.icons.forEach((item,index)=>{
 					const page = Math.floor( index/8 );
 					if( !pages[page] ){
 						pages[page] = [];
@@ -102,7 +63,7 @@
 			overflow:hidden
 			position:relative
 			width:25%
-			padding-bottom:25%
+			padding-bottom:24%
 			margin-bottom:-.27rem
 			.icon-img
 				position:absolute
