@@ -124,9 +124,10 @@
 		.button-list
 			overflow:hidden
 			padding:.1rem .6rem .1rem .1rem
+			display:flex
+			flex-wrap: wrap
 			.button-wrapper
 				width:33.3%
-				float:left
 				.button
 					margin:.1rem
 					padding:.1rem 0
