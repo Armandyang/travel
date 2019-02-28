@@ -24,7 +24,11 @@
 						el: '.swiper-pagination'
 					},
 					loop: true,
-					autoplay: true
+					autoplay: {
+						delay: 1000,
+						stopOnLast: false,
+						disableOnInteraction: false,
+					},
 				}
 			}
 		},
