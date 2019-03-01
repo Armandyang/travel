@@ -26,6 +26,7 @@
 		},
 		data(){
 			return  {
+				lastCity: '',
 				swiperList: [],
 				icons:[],
 				recommendList:[],
@@ -34,7 +35,7 @@
 		},
 		methods:{
 			getHomeInfo(){
-				axios.get( '/api/index.json' )
+				axios.get( '/api/index.json?city='+this.$store.state.city )
 				.then( this.getHomeInfoSucc )
 			},
 			getHomeInfoSucc(res){
@@ -49,7 +50,16 @@
 			}
 		},
 		mounted(){
+			this.lastCity = this.$store.state.city
+			console.log( this.lastCity )
 			this.getHomeInfo()
+		},
+		activated(){
+			console.log( this.$store.state.city )
+			if( this.lastCity !== this.$store.state.city){
+				this.lastCity = this.$store.state.city
+				this.getHomeInfo()
+			}
 		}
 	}
 </script>
