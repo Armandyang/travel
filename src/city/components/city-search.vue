@@ -8,8 +8,8 @@
 		</div>
 		<div class="search-content" ref="search" v-show="keyword">
 			<ul>
-				<li v-for="item in list" class="search-item border-bottom">{{item.name}}</li>
-				<li class="search-item border-bottom" v-show="hasNoData">没有找到匹配数据</li>
+				<li v-for="item in list" class="search-item border-bottom" @click="handleCityClick(item.name)">{{item.name}}</li>
+				<li class="search-item border-bottom" v-show="hasNoData" @click="handleCityClick2">没有找到匹配数据</li>
 			</ul>
 		</div>
 	</div>
@@ -27,6 +27,16 @@
 				keyword: '',
 				list: [],
 				timer: null
+			}
+		},
+		methods:{
+			handleCityClick(city){
+				this.$store.dispatch('changeCity',city)
+				this.keyword = ''
+				this.$router.push('/')
+			},
+			handleCityClick2(){
+				this.keyword = ''
 			}
 		},
 		computed : {
@@ -55,7 +65,7 @@
 						})
 					}
 					this.list = result
-				},10)
+				},100)
 			}
 		},
 		mounted (){
