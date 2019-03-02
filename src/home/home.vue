@@ -51,11 +51,9 @@
 		},
 		mounted(){
 			this.lastCity = this.$store.state.city
-			console.log( this.lastCity )
 			this.getHomeInfo()
 		},
 		activated(){
-			console.log( this.$store.state.city )
 			if( this.lastCity !== this.$store.state.city){
 				this.lastCity = this.$store.state.city
 				this.getHomeInfo()
