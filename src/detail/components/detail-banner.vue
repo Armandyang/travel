@@ -10,13 +10,16 @@
 				</div>
 			</div>
 		</div>
-		<common-gally :imgs="gallyImg" v-show="showBannerGally" @close="close"></common-gally>
+		<fade>
+			<common-gally :imgs="gallyImg" v-show="showBannerGally" @close="close"></common-gally>
+		</fade>
 	</div>
 	
 </template>
 
 <script>
 	import CommonGally from 'common/gally/Gally'
+	import Fade from 'common/fade/fade'
 	export default {
 		props: {
 			sightName: String,
@@ -37,7 +40,8 @@
 			}
 		},
 		components: {
-			CommonGally
+			CommonGally,
+			Fade
 		}
 	}
 </script>
