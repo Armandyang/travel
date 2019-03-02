@@ -68,6 +68,7 @@
 			text-align:center
 			color:#fff
 			background:$bgColor
+			z-index:9
 		.header-fixed-back
 			position:absolute
 			width:.64rem
