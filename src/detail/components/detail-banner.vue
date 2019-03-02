@@ -1,16 +1,16 @@
 <template>
 	<div>
 		<div class="detail-banner" @click="handleBannerGally">
-			<img src="http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_600x330_93d96bdf.jpg" class="banner-img"/>
+			<img :src="bannerImg" class="banner-img"/>
 			<div class="banner-info">
-				<div class="banner-title">北京欢乐谷(AAAA景区)</div>
+				<div class="banner-title">{{this.sightName}}</div>
 				<div class="banner-number">
 					<span class="iconfont banner-icon">&#xe617;</span>
-					22
+					{{this.gallyImg.length}}
 				</div>
 			</div>
 		</div>
-		<common-gally :imgs="imgs" v-show="showBannerGally" @close="close"></common-gally>
+		<common-gally :imgs="gallyImg" v-show="showBannerGally" @close="close"></common-gally>
 	</div>
 	
 </template>
@@ -18,12 +18,15 @@
 <script>
 	import CommonGally from 'common/gally/Gally'
 	export default {
+		props: {
+			sightName: String,
+			bannerImg: String,
+			gallyImg: Array
+		},
 		data(){
 			return {
-				showBannerGally: false,
-				imgs : ['http://img1.qunarzz.com/sight/p0/1709/e9/e9b7ae23f567806ea3.img.jpg_r_800x800_07570307.jpg',
-					'http://img1.qunarzz.com/sight/p0/1709/8c/8c90d360e818ed38a3.img.jpg_r_800x800_bcee8771.jpg']
-				}
+				showBannerGally: false
+			}
 		},
 		methods:{
 			handleBannerGally(){
